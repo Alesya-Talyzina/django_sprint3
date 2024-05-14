@@ -14,6 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
     inlines = (PostInline,)
     list_display = ('title',)
 
+
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         'title',

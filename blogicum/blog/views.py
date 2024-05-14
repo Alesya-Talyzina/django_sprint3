@@ -10,7 +10,7 @@ def get_posts():
             pub_date__lte=timezone.now(),
             category__is_published=True,
             is_published=True,
-        )
+    )
 
 
 def index(request):

@@ -19,7 +19,7 @@ class Location(PublishedModel):
 
     def __str__(self) -> str:
         return self.name[:20]
-    
+
 
 class Category(PublishedModel):
     title = models.CharField(
@@ -33,16 +33,16 @@ class Category(PublishedModel):
         'Идентификатор',
         unique=True,
         help_text="Идентификатор страницы для URL; "
-            "разрешены символы латиницы, цифры, дефис и подчёркивание."
+        "разрешены символы латиницы, цифры, дефис и подчёркивание."
     )
 
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'Категории'
-    
+
     def __str__(self) -> str:
         return self.title[:20]
-    
+
 
 class Post(PublishedModel):
     title = models.CharField(
@@ -55,7 +55,7 @@ class Post(PublishedModel):
     pub_date = models.DateTimeField(
         'Дата и время публикации',
         help_text="Если установить дату и время в будущем — "
-            "можно делать отложенные публикации."
+        "можно делать отложенные публикации."
     )
     author = models.ForeignKey(
         User,
