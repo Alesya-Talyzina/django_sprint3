@@ -39,3 +39,4 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Location)
+admin.site.unregister(Group)
