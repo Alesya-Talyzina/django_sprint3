@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from core.models import PublishedModel
+from . import constants
 
 
 User = get_user_model()
@@ -10,21 +11,22 @@ User = get_user_model()
 class Location(PublishedModel):
     name = models.CharField(
         'Название места',
-        max_length=256
+        max_length=constants.MAX_LENGTH
     )
 
     class Meta:
         verbose_name = 'местоположение'
         verbose_name_plural = 'Местоположения'
+        ordering = ('name',)
 
     def __str__(self) -> str:
-        return self.name[:20]
+        return self.name[:constants.RECORDS_LIMIT]
 
 
 class Category(PublishedModel):
     title = models.CharField(
         'Заголовок',
-        max_length=256
+        max_length=constants.MAX_LENGTH
     )
     description = models.TextField(
         verbose_name='Описание'
@@ -39,15 +41,16 @@ class Category(PublishedModel):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'Категории'
+        ordering = ('title',)
 
     def __str__(self) -> str:
-        return self.title[:20]
+        return self.title[:constants.RECORDS_LIMIT]
 
 
 class Post(PublishedModel):
     title = models.CharField(
         'Заголовок',
-        max_length=256
+        max_length=constants.MAX_LENGTH
     )
     text = models.TextField(
         verbose_name='Текст'
@@ -81,6 +84,7 @@ class Post(PublishedModel):
     class Meta:
         verbose_name = 'публикация'
         verbose_name_plural = 'Публикации'
+        ordering = ('-pub_date', 'title')
 
     def __str__(self) -> str:
-        return self.title[:20]
+        return self.title[:constants.RECORDS_LIMIT]
